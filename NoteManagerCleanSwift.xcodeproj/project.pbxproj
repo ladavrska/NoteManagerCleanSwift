@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,17 @@
 		0759B9B5234B7A1000638861 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0759B9B4234B7A1000638861 /* Assets.xcassets */; };
 		0759B9B8234B7A1000638861 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0759B9B6234B7A1000638861 /* LaunchScreen.storyboard */; };
 		0759B9C3234B7A1100638861 /* NoteManagerCleanSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759B9C2234B7A1100638861 /* NoteManagerCleanSwiftTests.swift */; };
+		0759B9D2234BC6B000638861 /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759B9D1234BC6B000638861 /* NotesListViewController.swift */; };
+		0759B9D4234BC77A00638861 /* NotesListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759B9D3234BC77A00638861 /* NotesListInteractor.swift */; };
+		0759B9D7234BC83800638861 /* NotesListInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759B9D6234BC83800638861 /* NotesListInterfaces.swift */; };
+		0759B9DA234BD03900638861 /* NotesListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759B9D9234BD03900638861 /* NotesListModels.swift */; };
+		0759B9DE234BD09E00638861 /* NoteType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759B9DD234BD09E00638861 /* NoteType.swift */; };
+		0759B9E0234BD0E200638861 /* NotesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759B9DF234BD0E200638861 /* NotesWorker.swift */; };
+		0759B9E2234BD19400638861 /* NotesStoreInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759B9E1234BD19400638861 /* NotesStoreInterfaces.swift */; };
+		0759B9E4234BD1EF00638861 /* NotesGetStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759B9E3234BD1EF00638861 /* NotesGetStore.swift */; };
+		0759B9E7234BD22D00638861 /* JSONDecoderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759B9E6234BD22D00638861 /* JSONDecoderExtension.swift */; };
+		0759B9E9234BD27C00638861 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759B9E8234BD27C00638861 /* Note.swift */; };
+		0759B9EC234BD2BD00638861 /* DataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759B9EB234BD2BD00638861 /* DataError.swift */; };
 		B4DF83BA2DAD004B07338534 /* Pods_NoteManagerCleanSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78483191245596C8F944BE4 /* Pods_NoteManagerCleanSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +49,17 @@
 		0759B9BE234B7A1100638861 /* NoteManagerCleanSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoteManagerCleanSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0759B9C2234B7A1100638861 /* NoteManagerCleanSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteManagerCleanSwiftTests.swift; sourceTree = "<group>"; };
 		0759B9C4234B7A1100638861 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0759B9D1234BC6B000638861 /* NotesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
+		0759B9D3234BC77A00638861 /* NotesListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListInteractor.swift; sourceTree = "<group>"; };
+		0759B9D6234BC83800638861 /* NotesListInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListInterfaces.swift; sourceTree = "<group>"; };
+		0759B9D9234BD03900638861 /* NotesListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListModels.swift; sourceTree = "<group>"; };
+		0759B9DD234BD09E00638861 /* NoteType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteType.swift; sourceTree = "<group>"; };
+		0759B9DF234BD0E200638861 /* NotesWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesWorker.swift; sourceTree = "<group>"; };
+		0759B9E1234BD19400638861 /* NotesStoreInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesStoreInterfaces.swift; sourceTree = "<group>"; };
+		0759B9E3234BD1EF00638861 /* NotesGetStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesGetStore.swift; sourceTree = "<group>"; };
+		0759B9E6234BD22D00638861 /* JSONDecoderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderExtension.swift; sourceTree = "<group>"; };
+		0759B9E8234BD27C00638861 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		0759B9EB234BD2BD00638861 /* DataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataError.swift; sourceTree = "<group>"; };
 		AF801775EEA4E8AAD486C584 /* Pods-NoteManagerCleanSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoteManagerCleanSwift.release.xcconfig"; path = "Target Support Files/Pods-NoteManagerCleanSwift/Pods-NoteManagerCleanSwift.release.xcconfig"; sourceTree = "<group>"; };
 		C78483191245596C8F944BE4 /* Pods_NoteManagerCleanSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoteManagerCleanSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -84,6 +106,8 @@
 		0759B9AC234B79FF00638861 /* NoteManagerCleanSwift */ = {
 			isa = PBXGroup;
 			children = (
+				0759B9DB234BD07300638861 /* CoreLibs */,
+				0759B9CF234BC64700638861 /* Scenes */,
 				0759B9AD234B79FF00638861 /* AppDelegate.swift */,
 				0759B9AF234B79FF00638861 /* ViewController.swift */,
 				0759B9B1234B79FF00638861 /* Main.storyboard */,
@@ -103,6 +127,71 @@
 			path = NoteManagerCleanSwiftTests;
 			sourceTree = "<group>";
 		};
+		0759B9CF234BC64700638861 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				0759B9D0234BC67D00638861 /* NotesList */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		0759B9D0234BC67D00638861 /* NotesList */ = {
+			isa = PBXGroup;
+			children = (
+				0759B9D5234BC7F600638861 /* Common */,
+				0759B9D1234BC6B000638861 /* NotesListViewController.swift */,
+				0759B9D3234BC77A00638861 /* NotesListInteractor.swift */,
+				0759B9DF234BD0E200638861 /* NotesWorker.swift */,
+			);
+			path = NotesList;
+			sourceTree = "<group>";
+		};
+		0759B9D5234BC7F600638861 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0759B9D6234BC83800638861 /* NotesListInterfaces.swift */,
+				0759B9D9234BD03900638861 /* NotesListModels.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		0759B9DB234BD07300638861 /* CoreLibs */ = {
+			isa = PBXGroup;
+			children = (
+				0759B9EA234BD2A500638861 /* Errors */,
+				0759B9E5234BD20D00638861 /* Extensions */,
+				0759B9DC234BD07F00638861 /* Models */,
+				0759B9E1234BD19400638861 /* NotesStoreInterfaces.swift */,
+				0759B9E3234BD1EF00638861 /* NotesGetStore.swift */,
+			);
+			path = CoreLibs;
+			sourceTree = "<group>";
+		};
+		0759B9DC234BD07F00638861 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0759B9DD234BD09E00638861 /* NoteType.swift */,
+				0759B9E8234BD27C00638861 /* Note.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0759B9E5234BD20D00638861 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0759B9E6234BD22D00638861 /* JSONDecoderExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0759B9EA234BD2A500638861 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				0759B9EB234BD2BD00638861 /* DataError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		8D2A5959A06911FE24E54529 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,7 +206,6 @@
 				0447BE2A98A00950DDF55E5E /* Pods-NoteManagerCleanSwift.debug.xcconfig */,
 				AF801775EEA4E8AAD486C584 /* Pods-NoteManagerCleanSwift.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -284,8 +372,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0759B9D7234BC83800638861 /* NotesListInterfaces.swift in Sources */,
+				0759B9DE234BD09E00638861 /* NoteType.swift in Sources */,
+				0759B9E2234BD19400638861 /* NotesStoreInterfaces.swift in Sources */,
+				0759B9D4234BC77A00638861 /* NotesListInteractor.swift in Sources */,
+				0759B9E4234BD1EF00638861 /* NotesGetStore.swift in Sources */,
 				0759B9B0234B79FF00638861 /* ViewController.swift in Sources */,
+				0759B9D2234BC6B000638861 /* NotesListViewController.swift in Sources */,
+				0759B9E7234BD22D00638861 /* JSONDecoderExtension.swift in Sources */,
 				0759B9AE234B79FF00638861 /* AppDelegate.swift in Sources */,
+				0759B9DA234BD03900638861 /* NotesListModels.swift in Sources */,
+				0759B9E0234BD0E200638861 /* NotesWorker.swift in Sources */,
+				0759B9EC234BD2BD00638861 /* DataError.swift in Sources */,
+				0759B9E9234BD27C00638861 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
