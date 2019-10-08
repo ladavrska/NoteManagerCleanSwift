@@ -9,11 +9,11 @@
 import Foundation
 
 public struct Note: NoteType, Codable {
-    public var id: Int
+    public var noteId: Int
     public var title: String
     
-    init(id: Int = 0, title: String = "") {
-        self.id = id
-        self.title = title
+    enum CodingKeys: String, CodingKey {
+        case noteId = "id"
+        case title
     }
 }

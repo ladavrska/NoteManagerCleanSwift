@@ -27,7 +27,7 @@ enum NotesListModels {
     }
     
     struct NoteViewModel {
-        let id: Int
+        let noteId: Int
         let title: String
     }
 }

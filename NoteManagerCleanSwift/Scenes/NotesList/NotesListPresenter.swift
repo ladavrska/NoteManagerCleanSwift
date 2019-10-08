@@ -47,7 +47,7 @@ private extension NotesListPresenter {
     
     func make(note: NoteType) -> NotesListModels.NoteViewModel {
         return NotesListModels.NoteViewModel(
-            id: note.id,
+            noteId: note.noteId,
             title: note.title
         )
     }

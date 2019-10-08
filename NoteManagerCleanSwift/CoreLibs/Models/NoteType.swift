@@ -9,6 +9,6 @@
 import Foundation
 
 public protocol NoteType {
-    var id: Int { get }
+    var noteId: Int { get }
     var title: String { get }
 }
