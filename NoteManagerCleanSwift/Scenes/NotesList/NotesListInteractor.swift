@@ -9,9 +9,11 @@
 import Foundation
 
 struct NotesListInteractor {
+    private let presenter: NotesListPresentable
     private let notesWorker: NotesWorkerType
     
-    init(notesWorker: NotesWorkerType) {
+    init(presenter: NotesListPresentable, notesWorker: NotesWorkerType) {
+        self.presenter = presenter
         self.notesWorker = notesWorker
     }
 }
@@ -25,7 +27,8 @@ extension NotesListInteractor: NotesListBusinessLogic {
             guard let notes = $0.value, $0.isSuccess else {
                 return
             }
-            print("value: \(notes)")            
+            print("value: \(notes)")
+            self.presenter.presentFetchedNotes(for: NotesListModels.Response(notes: notes))
         }
     }
 }

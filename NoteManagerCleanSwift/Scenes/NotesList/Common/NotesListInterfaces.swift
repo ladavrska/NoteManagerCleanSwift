@@ -9,11 +9,17 @@
 import Foundation
 
 // View Controlelr
-protocol ListProductsDisplayable: class {
-    func displayFetchedProducts(with viewModel: NotesListModels.ViewModel)
+protocol ListProductsDisplayable: class, AppDisplayable {
+    func displayFetchedNotes(with viewModel: NotesListModels.ViewModel)
 }
 
 // Interactor
 protocol NotesListBusinessLogic {
     func fetchNotes(with request: NotesListModels.FetchRequest)
+}
+
+// Presenter
+protocol NotesListPresentable {
+    func presentFetchedNotes(for response: NotesListModels.Response)
+    func presentFetchedNotes(error: DataError)
 }

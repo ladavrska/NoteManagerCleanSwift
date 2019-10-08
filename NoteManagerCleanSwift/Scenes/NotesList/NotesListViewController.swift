@@ -11,10 +11,15 @@ import SnapKit
 
 class NotesListViewController: UIViewController {
     
+    private var tableView = UITableView()
+    private let cellReuseIdentifier = "PersonalNoteTableViewCell"
+    let topOffset = 90
+    
     // MARK: - VIP variables
     
     private lazy var interactor = NotesListInteractor(
-        notesWorker: NotesWorker(store: NotesGetStore())
+        presenter: NotesListPresenter(viewController: self),
+        notesWorker: NotesWorker(store: NotesListStore())
     )
     
     // MARK: - View models
@@ -23,8 +28,35 @@ class NotesListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareTableView()
         loadData()
     }
+}
+
+extension NotesListViewController: UITableViewDelegate {
+    
+    func prepareTableView() {
+        tableView.rowHeight = 60.0
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { maker in
+            maker.top.equalToSuperview().offset(topOffset)
+            maker.bottom.leading.trailing.equalToSuperview()
+        }
+        tableView.separatorStyle = .none
+        tableView.allowsSelection = true
+        tableView.delegate = self
+        tableView.dataSource = self
+        //tableView.swipeActionsEnabled = true
+        //tableView.refreshControl = refreshControl
+        registerCell()
+    }
+    
+    func registerCell() {
+        let cellClass = PersonalNoteTableViewCell.self
+        let classIdentifier = String(describing: PersonalNoteTableViewCell.self)
+        tableView.register(cellClass, forCellReuseIdentifier: classIdentifier)
+    }
+    
 }
 
 // MARK: - Events
@@ -35,5 +67,39 @@ private extension NotesListViewController {
         interactor.fetchNotes(
             with: NotesListModels.FetchRequest()
         )
+    }
+    
+    func loadUI() {
+        tableView.reloadData()
+        print("reload table")
+    }
+}
+
+extension NotesListViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel?.notes.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        var cell = UITableViewCell()
+        if let noteCell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as? PersonalNoteTableViewCell {
+            guard let model = viewModel?.notes[indexPath.row] else { return cell }
+            noteCell.bind(model)
+            cell = noteCell
+        }
+        return cell
+    }
+}
+
+// MARK: - VIP cycle
+
+extension NotesListViewController: ListProductsDisplayable {
+    
+    func displayFetchedNotes(with viewModel: NotesListModels.ViewModel) {
+        print("viewModel: \(viewModel)")
+        self.viewModel = viewModel
+        loadUI()
     }
 }
