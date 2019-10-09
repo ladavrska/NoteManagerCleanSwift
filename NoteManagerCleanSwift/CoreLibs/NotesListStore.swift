@@ -19,8 +19,10 @@ public struct NotesListStore: NotesStore {
 public extension NotesListStore {
     
     func fetch(completion: @escaping (Result<[NoteType]>) -> Void) {
-        let url = "http://private-9aad-note10.apiary-mock.com/notes"
-        Alamofire.request(url).responseData { response in
+        guard let url = self.baseUrl else {
+            return
+        }
+        Alamofire.request("\(url)/notes").responseData { response in
             let decoder = JSONDecoder()
             let result: Result<[Note]> = decoder.decodeResponse(from: response)
             switch result {

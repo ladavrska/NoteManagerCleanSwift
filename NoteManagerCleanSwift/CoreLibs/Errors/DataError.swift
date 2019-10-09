@@ -9,8 +9,12 @@
 import Foundation
 
 public enum DataError: Error {
-    case urlError(reason: String)
-    case serializationFailure(reason: String)
-    case parseFailure(reason: String)
-    case networkFailure(reason: String)
+    case nonExistent
+    case unauthorized
+    case noInternet
+    case parseFailure(Error?)
+    case databaseFailure(Error?)
+    case cacheFailure(Error?)
+    case networkFailure(Error?)
+    case unknownReason(Error?)
 }

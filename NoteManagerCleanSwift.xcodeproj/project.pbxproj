@@ -29,6 +29,8 @@
 		0759B9F8234C56A100638861 /* NotesListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759B9F7234C56A100638861 /* NotesListPresenter.swift */; };
 		0759B9FB234C57C000638861 /* AppModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759B9FA234C57C000638861 /* AppModels.swift */; };
 		0759B9FD234C57DF00638861 /* AppDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759B9FC234C57DF00638861 /* AppDisplayable.swift */; };
+		0759BA02234C7CCC00638861 /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759BA01234C7CCC00638861 /* UIBarButtonItemExtension.swift */; };
+		0759BA04234C7FF400638861 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759BA03234C7FF400638861 /* UIColorExtension.swift */; };
 		B4DF83BA2DAD004B07338534 /* Pods_NoteManagerCleanSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78483191245596C8F944BE4 /* Pods_NoteManagerCleanSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +72,8 @@
 		0759B9F7234C56A100638861 /* NotesListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListPresenter.swift; sourceTree = "<group>"; };
 		0759B9FA234C57C000638861 /* AppModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModels.swift; sourceTree = "<group>"; };
 		0759B9FC234C57DF00638861 /* AppDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDisplayable.swift; sourceTree = "<group>"; };
+		0759BA01234C7CCC00638861 /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
+		0759BA03234C7FF400638861 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		AF801775EEA4E8AAD486C584 /* Pods-NoteManagerCleanSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoteManagerCleanSwift.release.xcconfig"; path = "Target Support Files/Pods-NoteManagerCleanSwift/Pods-NoteManagerCleanSwift.release.xcconfig"; sourceTree = "<group>"; };
 		C78483191245596C8F944BE4 /* Pods_NoteManagerCleanSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoteManagerCleanSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -194,6 +198,8 @@
 			isa = PBXGroup;
 			children = (
 				0759B9E6234BD22D00638861 /* JSONDecoderExtension.swift */,
+				0759BA01234C7CCC00638861 /* UIBarButtonItemExtension.swift */,
+				0759BA03234C7FF400638861 /* UIColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -411,12 +417,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0759BA02234C7CCC00638861 /* UIBarButtonItemExtension.swift in Sources */,
 				0759B9F8234C56A100638861 /* NotesListPresenter.swift in Sources */,
 				0759B9D7234BC83800638861 /* NotesListInterfaces.swift in Sources */,
 				0759B9F0234C517300638861 /* NotesListStore.swift in Sources */,
 				0759B9DE234BD09E00638861 /* NoteType.swift in Sources */,
 				0759B9FD234C57DF00638861 /* AppDisplayable.swift in Sources */,
 				0759B9E2234BD19400638861 /* NotesStoreInterfaces.swift in Sources */,
+				0759BA04234C7FF400638861 /* UIColorExtension.swift in Sources */,
 				0759B9D4234BC77A00638861 /* NotesListInteractor.swift in Sources */,
 				0759B9B0234B79FF00638861 /* ViewController.swift in Sources */,
 				0759B9D2234BC6B000638861 /* NotesListViewController.swift in Sources */,
@@ -591,6 +599,7 @@
 			baseConfigurationReference = 0447BE2A98A00950DDF55E5E /* Pods-NoteManagerCleanSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BaseUrl = "http://private-9aad-note10.apiary-mock.com";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T3F8H884CW;
 				INFOPLIST_FILE = NoteManagerCleanSwift/Info.plist;
@@ -610,6 +619,7 @@
 			baseConfigurationReference = AF801775EEA4E8AAD486C584 /* Pods-NoteManagerCleanSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BaseUrl = "http://private-9aad-note10.apiary-mock.com";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T3F8H884CW;
 				INFOPLIST_FILE = NoteManagerCleanSwift/Info.plist;

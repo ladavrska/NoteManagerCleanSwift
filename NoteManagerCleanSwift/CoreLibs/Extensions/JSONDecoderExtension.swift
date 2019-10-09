@@ -17,7 +17,7 @@ extension JSONDecoder {
         }
         
         guard let responseData = response.data else {
-            return .failure(DataError.networkFailure(reason: "Response data failure"))
+            return .failure(DataError.networkFailure(nil))
         }
         
         do {

@@ -7,16 +7,15 @@
 //
 
 import Foundation
+import UIKit
 
 struct NotesListPresenter: NotesListPresentable {
-    private weak var viewController: ListProductsDisplayable?
-    private let currencyFormatter: NumberFormatter
+    private weak var viewController: NotesListDisplayable?
     
-    init(viewController: ListProductsDisplayable?) {
+    init(viewController: NotesListDisplayable?) {
         self.viewController = viewController
-        
-        self.currencyFormatter = NumberFormatter()
-        self.currencyFormatter.numberStyle = .currency
+        // present Nav Bar ???
+        viewController?.displayNavigationBar(title: "My notees")
     }
 }
 
@@ -31,13 +30,20 @@ extension NotesListPresenter {
     }
     
     func presentFetchedNotes(error: DataError) {
-        // Handle and parse error
         let viewModel = AppModels.Error(
             title: "Notes Error",
             message: "There was an error retrieving the notes: \(error)"
         )
         
         viewController?.display(error: viewModel)
+    }
+    
+    func showActivityIndicator() {
+        viewController?.showActivityIndicator()
+    }
+    
+    func hideActivityIndicator() {
+        viewController?.hideActivityIndicator()
     }
 }
 

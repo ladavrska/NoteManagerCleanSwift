@@ -13,7 +13,8 @@ class NotesListViewController: UIViewController {
     
     private var tableView = UITableView()
     private let cellReuseIdentifier = "PersonalNoteTableViewCell"
-    let topOffset = 90
+    public var topOffset: CGFloat = 90
+    var activityIndicator = UIActivityIndicatorView()
     
     // MARK: - VIP variables
     
@@ -30,6 +31,10 @@ class NotesListViewController: UIViewController {
         super.viewDidLoad()
         prepareTableView()
         loadData()
+    }
+    
+    @objc public func didTapCreateNote() {
+        print("didTapCreateNote")
     }
 }
 
@@ -95,7 +100,7 @@ extension NotesListViewController: UITableViewDataSource {
 
 // MARK: - VIP cycle
 
-extension NotesListViewController: ListProductsDisplayable {
+extension NotesListViewController: NotesListDisplayable {
     
     func displayFetchedNotes(with viewModel: NotesListModels.ViewModel) {
         print("viewModel: \(viewModel)")

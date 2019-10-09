@@ -21,13 +21,14 @@ struct NotesListInteractor {
 extension NotesListInteractor: NotesListBusinessLogic {
     
     func fetchNotes(with request: NotesListModels.FetchRequest) {
-        
+        self.presenter.showActivityIndicator()
         notesWorker.fetch {
             print("$0: \($0)")
             guard let notes = $0.value, $0.isSuccess else {
-                return
+                return self.presenter.presentFetchedNotes(error: $0.error as? DataError ?? .unknownReason(nil))
             }
-            print("value: \(notes)")
+            print("notes: \(notes)")
+            self.presenter.hideActivityIndicator()
             self.presenter.presentFetchedNotes(for: NotesListModels.Response(notes: notes))
         }
     }

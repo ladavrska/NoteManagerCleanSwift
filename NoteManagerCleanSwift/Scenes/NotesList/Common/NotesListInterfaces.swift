@@ -9,8 +9,9 @@
 import Foundation
 
 // View Controlelr
-protocol ListProductsDisplayable: class, AppDisplayable {
+protocol NotesListDisplayable: class, AppDisplayable {
     func displayFetchedNotes(with viewModel: NotesListModels.ViewModel)
+    func displayNavigationBar(title: String)
 }
 
 // Interactor
@@ -22,4 +23,6 @@ protocol NotesListBusinessLogic {
 protocol NotesListPresentable {
     func presentFetchedNotes(for response: NotesListModels.Response)
     func presentFetchedNotes(error: DataError)
+    func showActivityIndicator()
+    func hideActivityIndicator()
 }
