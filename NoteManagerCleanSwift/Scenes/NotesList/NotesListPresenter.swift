@@ -14,7 +14,6 @@ struct NotesListPresenter: NotesListPresentable {
     
     init(viewController: NotesListDisplayable?) {
         self.viewController = viewController
-        // present Nav Bar ???
         viewController?.displayNavigationBar(title: "My notees")
     }
 }
