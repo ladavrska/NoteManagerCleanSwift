@@ -26,7 +26,7 @@ class NotesListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // MARK: - View models
     
-    private var viewModel: NotesListModels.ViewModel?
+    private var viewModel: NotesListModels.FetchNotes.ViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +64,7 @@ private extension NotesListViewController {
     
     func loadData() {
         interactor.fetchNotes(
-            with: NotesListModels.FetchRequest()
+            with: NotesListModels.FetchNotes.FetchRequest()
         )
     }
     
@@ -81,7 +81,7 @@ private extension NotesListViewController {
 
 extension NotesListViewController: NotesListDisplayable {
     
-    func displayFetchedNotes(with viewModel: NotesListModels.ViewModel) {
+    func displayFetchedNotes(with viewModel: NotesListModels.FetchNotes.ViewModel) {
         print("viewModel: \(viewModel)")
         self.viewModel = viewModel
         loadUI()

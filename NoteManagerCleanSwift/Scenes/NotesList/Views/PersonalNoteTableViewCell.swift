@@ -29,7 +29,7 @@ public class PersonalNoteTableViewCell: BaseTableViewCell {
         titleLabel.numberOfLines = 2
     }
     
-    func bind(_ model: NotesListModels.NoteViewModel) {
+    func bind(_ model: NotesListModels.FetchNotes.NoteViewModel) {
         titleLabel.text = "\(model.title)"
     }
 }

@@ -10,20 +10,23 @@ import Foundation
 
 enum NotesListModels {
     
-    struct FetchRequest {
+    enum FetchNotes {
+    
+        struct FetchRequest {
+            
+        }
         
-    }
-    
-    struct Response {
-        let notes: [NoteType]
-    }
-    
-    struct ViewModel {
-        let notes: [NoteViewModel]
-    }
-    
-    struct NoteViewModel {
-        let noteId: Int
-        let title: String
+        struct Response {
+            let notes: [NoteType]
+        }
+        
+        struct ViewModel {
+            let notes: [NoteViewModel]
+        }
+        
+        struct NoteViewModel {
+            let noteId: Int
+            let title: String
+        }
     }
 }

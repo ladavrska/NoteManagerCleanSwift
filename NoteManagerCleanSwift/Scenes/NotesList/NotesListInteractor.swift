@@ -20,7 +20,7 @@ struct NotesListInteractor {
 
 extension NotesListInteractor: NotesListBusinessLogic {
     
-    func fetchNotes(with request: NotesListModels.FetchRequest) {
+    func fetchNotes(with request: NotesListModels.FetchNotes.FetchRequest) {
         self.presenter.showActivityIndicator()
         notesWorker.fetch {
             print("$0: \($0)")
@@ -29,7 +29,7 @@ extension NotesListInteractor: NotesListBusinessLogic {
             }
             print("notes: \(notes)")
             self.presenter.hideActivityIndicator()
-            self.presenter.presentFetchedNotes(for: NotesListModels.Response(notes: notes))
+            self.presenter.presentFetchedNotes(for: NotesListModels.FetchNotes.Response(notes: notes))
         }
     }
 }

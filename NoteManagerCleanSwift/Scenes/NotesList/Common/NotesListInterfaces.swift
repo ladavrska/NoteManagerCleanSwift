@@ -10,18 +10,18 @@ import Foundation
 
 // View Controlelr
 protocol NotesListDisplayable: class, AppDisplayable {
-    func displayFetchedNotes(with viewModel: NotesListModels.ViewModel)
+    func displayFetchedNotes(with viewModel: NotesListModels.FetchNotes.ViewModel)
     func displayNavigationBar(title: String)
 }
 
 // Interactor
 protocol NotesListBusinessLogic {
-    func fetchNotes(with request: NotesListModels.FetchRequest)
+    func fetchNotes(with request: NotesListModels.FetchNotes.FetchRequest)
 }
 
 // Presenter
 protocol NotesListPresentable {
-    func presentFetchedNotes(for response: NotesListModels.Response)
+    func presentFetchedNotes(for response: NotesListModels.FetchNotes.Response)
     func presentFetchedNotes(error: DataError)
     func showActivityIndicator()
     func hideActivityIndicator()

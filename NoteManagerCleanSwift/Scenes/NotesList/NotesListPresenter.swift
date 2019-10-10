@@ -19,8 +19,8 @@ struct NotesListPresenter: NotesListPresentable {
 
 extension NotesListPresenter {
     
-    func presentFetchedNotes(for response: NotesListModels.Response) {
-        let viewModel = NotesListModels.ViewModel(
+    func presentFetchedNotes(for response: NotesListModels.FetchNotes.Response) {
+        let viewModel = NotesListModels.FetchNotes.ViewModel(
             notes: response.notes.map { make(note: $0) }
         )
         
@@ -53,8 +53,8 @@ extension NotesListPresenter {
 
 private extension NotesListPresenter {
     
-    func make(note: NoteType) -> NotesListModels.NoteViewModel {
-        return NotesListModels.NoteViewModel(
+    func make(note: NoteType) -> NotesListModels.FetchNotes.NoteViewModel {
+        return NotesListModels.FetchNotes.NoteViewModel(
             noteId: note.noteId,
             title: note.title
         )
