@@ -14,7 +14,6 @@ struct NotesListPresenter: NotesListPresentable {
     
     init(viewController: NotesListDisplayable?) {
         self.viewController = viewController
-        viewController?.displayNavigationBar(title: "My notees")
     }
 }
 
@@ -38,11 +37,15 @@ extension NotesListPresenter {
     }
     
     func showActivityIndicator() {
+        guard let noteListVC = viewController, !noteListVC.refreshControl.isRefreshing else {
+            return
+        }
         viewController?.showActivityIndicator()
     }
     
     func hideActivityIndicator() {
         viewController?.hideActivityIndicator()
+        viewController?.hideRefresControl()
     }
 }
 

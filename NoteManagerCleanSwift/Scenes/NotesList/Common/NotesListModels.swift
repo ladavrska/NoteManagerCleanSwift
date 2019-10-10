@@ -14,10 +14,6 @@ enum NotesListModels {
         
     }
     
-    struct SearchRequest {
-        let text: String
-    }
-    
     struct Response {
         let notes: [NoteType]
     }

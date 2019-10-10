@@ -9,12 +9,13 @@
 import UIKit
 import SnapKit
 
-class NotesListViewController: UIViewController {
+class NotesListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    private var tableView = UITableView()
+    var tableView = UITableView()
     private let cellReuseIdentifier = "PersonalNoteTableViewCell"
     public var topOffset: CGFloat = 90
     var activityIndicator = UIActivityIndicatorView()
+    let refreshControl = UIRefreshControl()
     
     // MARK: - VIP variables
     
@@ -29,58 +30,17 @@ class NotesListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        prepareTableView()
+        displayNavigationBar(title: "My notees")
+        displayTableView()
         loadData()
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
     }
     
     @objc public func didTapCreateNote() {
         print("didTapCreateNote")
     }
-}
-
-extension NotesListViewController: UITableViewDelegate {
     
-    func prepareTableView() {
-        tableView.rowHeight = 60.0
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { maker in
-            maker.top.equalToSuperview().offset(topOffset)
-            maker.bottom.leading.trailing.equalToSuperview()
-        }
-        tableView.separatorStyle = .none
-        tableView.allowsSelection = true
-        tableView.delegate = self
-        tableView.dataSource = self
-        //tableView.swipeActionsEnabled = true
-        //tableView.refreshControl = refreshControl
-        registerCell()
-    }
-    
-    func registerCell() {
-        let cellClass = PersonalNoteTableViewCell.self
-        let classIdentifier = String(describing: PersonalNoteTableViewCell.self)
-        tableView.register(cellClass, forCellReuseIdentifier: classIdentifier)
-    }
-    
-}
-
-// MARK: - Events
-
-private extension NotesListViewController {
-    
-    func loadData() {
-        interactor.fetchNotes(
-            with: NotesListModels.FetchRequest()
-        )
-    }
-    
-    func loadUI() {
-        tableView.reloadData()
-        print("reload table")
-    }
-}
-
-extension NotesListViewController: UITableViewDataSource {
+    // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.notes.count ?? 0
@@ -95,6 +55,25 @@ extension NotesListViewController: UITableViewDataSource {
             cell = noteCell
         }
         return cell
+    }
+}
+
+// MARK: - Events
+
+private extension NotesListViewController {
+    
+    func loadData() {
+        interactor.fetchNotes(
+            with: NotesListModels.FetchRequest()
+        )
+    }
+    
+    func loadUI() {
+        tableView.reloadData()
+    }
+    
+    @objc private func refreshData(_ sender: Any) {
+        loadData()
     }
 }
 

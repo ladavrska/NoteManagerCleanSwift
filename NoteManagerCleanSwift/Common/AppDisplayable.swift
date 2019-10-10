@@ -10,10 +10,13 @@ import UIKit
 
 protocol AppDisplayable {
     var activityIndicator: UIActivityIndicatorView { get }
+    var refreshControl: UIRefreshControl { get }
     func display(error: AppModels.Error)
     func displayNavigationBar(title: String)
     func showActivityIndicator()
     func hideActivityIndicator()
+    func displayTableView()
+    func hideRefresControl()
 }
 
 extension AppDisplayable where Self: UIViewController {
@@ -51,11 +54,17 @@ extension AppDisplayable where Self: UIViewController {
             self.activityIndicator.removeFromSuperview()
         }
     }
+    
+    func hideRefresControl() {
+        DispatchQueue.main.async {
+            self.refreshControl.endRefreshing()
+        }
+    }
 }
 
-// MARK: - NavigationBar
-
 extension AppDisplayable where Self: NotesListViewController {
+    
+    // MARK: - NavigationBar
     
     func displayNavigationBar(title: String) {
         guard let navController = self.navigationController else {
@@ -78,4 +87,28 @@ extension AppDisplayable where Self: NotesListViewController {
             self.topOffset = navigationBarHeight
         }
     }
+    
+    // MARK: - TableView
+    
+    func displayTableView() {
+        self.tableView.rowHeight = 60.0
+        self.view.addSubview(self.tableView)
+        self.tableView.snp.makeConstraints { maker in
+            maker.top.equalToSuperview().offset(self.topOffset)
+            maker.bottom.leading.trailing.equalToSuperview()
+        }
+        self.tableView.separatorStyle = .none
+        self.tableView.allowsSelection = true
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.refreshControl = self.refreshControl
+        registerCell()
+    }
+    
+    func registerCell() {
+        let cellClass = PersonalNoteTableViewCell.self
+        let classIdentifier = String(describing: PersonalNoteTableViewCell.self)
+        tableView.register(cellClass, forCellReuseIdentifier: classIdentifier)
+    }
+    
 }
