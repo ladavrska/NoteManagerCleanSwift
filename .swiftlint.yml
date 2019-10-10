@@ -1,6 +1,7 @@
 disabled_rules:
 - trailing_whitespace
 - large_tuple
+- nesting
 opt_in_rules:
 - empty_count
 - empty_string

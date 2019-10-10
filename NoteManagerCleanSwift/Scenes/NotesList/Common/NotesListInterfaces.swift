@@ -26,3 +26,8 @@ protocol NotesListPresentable {
     func showActivityIndicator()
     func hideActivityIndicator()
 }
+
+// Router
+protocol NotesListRoutable { 
+    func showNote(for noteId: Int)
+}

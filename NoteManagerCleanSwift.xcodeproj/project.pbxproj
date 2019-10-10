@@ -31,6 +31,8 @@
 		0759B9FD234C57DF00638861 /* AppDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759B9FC234C57DF00638861 /* AppDisplayable.swift */; };
 		0759BA02234C7CCC00638861 /* UIBarButtonItemExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759BA01234C7CCC00638861 /* UIBarButtonItemExtension.swift */; };
 		0759BA04234C7FF400638861 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759BA03234C7FF400638861 /* UIColorExtension.swift */; };
+		07F8FBCD234F483800A054BE /* NotesListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F8FBCC234F483800A054BE /* NotesListRouter.swift */; };
+		07F8FBD5234FA38100A054BE /* NotesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F8FBD4234FA38100A054BE /* NotesDetailViewController.swift */; };
 		B4DF83BA2DAD004B07338534 /* Pods_NoteManagerCleanSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78483191245596C8F944BE4 /* Pods_NoteManagerCleanSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +76,8 @@
 		0759B9FC234C57DF00638861 /* AppDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDisplayable.swift; sourceTree = "<group>"; };
 		0759BA01234C7CCC00638861 /* UIBarButtonItemExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBarButtonItemExtension.swift; sourceTree = "<group>"; };
 		0759BA03234C7FF400638861 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		07F8FBCC234F483800A054BE /* NotesListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListRouter.swift; sourceTree = "<group>"; };
+		07F8FBD4234FA38100A054BE /* NotesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDetailViewController.swift; sourceTree = "<group>"; };
 		AF801775EEA4E8AAD486C584 /* Pods-NoteManagerCleanSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoteManagerCleanSwift.release.xcconfig"; path = "Target Support Files/Pods-NoteManagerCleanSwift/Pods-NoteManagerCleanSwift.release.xcconfig"; sourceTree = "<group>"; };
 		C78483191245596C8F944BE4 /* Pods_NoteManagerCleanSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoteManagerCleanSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -145,6 +149,7 @@
 		0759B9CF234BC64700638861 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				07F8FBD3234FA34D00A054BE /* NotesDetail */,
 				0759B9D0234BC67D00638861 /* NotesList */,
 			);
 			path = Scenes;
@@ -158,6 +163,7 @@
 				0759B9D1234BC6B000638861 /* NotesListViewController.swift */,
 				0759B9D3234BC77A00638861 /* NotesListInteractor.swift */,
 				0759B9F7234C56A100638861 /* NotesListPresenter.swift */,
+				07F8FBCC234F483800A054BE /* NotesListRouter.swift */,
 			);
 			path = NotesList;
 			sourceTree = "<group>";
@@ -235,6 +241,14 @@
 				0759B9FC234C57DF00638861 /* AppDisplayable.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		07F8FBD3234FA34D00A054BE /* NotesDetail */ = {
+			isa = PBXGroup;
+			children = (
+				07F8FBD4234FA38100A054BE /* NotesDetailViewController.swift */,
+			);
+			path = NotesDetail;
 			sourceTree = "<group>";
 		};
 		8D2A5959A06911FE24E54529 /* Frameworks */ = {
@@ -420,6 +434,7 @@
 				0759BA02234C7CCC00638861 /* UIBarButtonItemExtension.swift in Sources */,
 				0759B9F8234C56A100638861 /* NotesListPresenter.swift in Sources */,
 				0759B9D7234BC83800638861 /* NotesListInterfaces.swift in Sources */,
+				07F8FBCD234F483800A054BE /* NotesListRouter.swift in Sources */,
 				0759B9F0234C517300638861 /* NotesListStore.swift in Sources */,
 				0759B9DE234BD09E00638861 /* NoteType.swift in Sources */,
 				0759B9FD234C57DF00638861 /* AppDisplayable.swift in Sources */,
@@ -431,6 +446,7 @@
 				0759B9E7234BD22D00638861 /* JSONDecoderExtension.swift in Sources */,
 				0759B9AE234B79FF00638861 /* AppDelegate.swift in Sources */,
 				0759B9DA234BD03900638861 /* NotesListModels.swift in Sources */,
+				07F8FBD5234FA38100A054BE /* NotesDetailViewController.swift in Sources */,
 				0759B9E0234BD0E200638861 /* NotesWorker.swift in Sources */,
 				0759B9EC234BD2BD00638861 /* DataError.swift in Sources */,
 				0759B9E9234BD27C00638861 /* Note.swift in Sources */,

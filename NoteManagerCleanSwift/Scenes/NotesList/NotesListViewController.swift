@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class NotesListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class NotesListViewController: UIViewController {
     
     var tableView = UITableView()
     private let cellReuseIdentifier = "PersonalNoteTableViewCell"
@@ -23,6 +23,8 @@ class NotesListViewController: UIViewController, UITableViewDelegate, UITableVie
         presenter: NotesListPresenter(viewController: self),
         notesWorker: NotesWorker(store: NotesListStore())
     )
+    
+    private lazy var router: NotesListRoutable = NotesListRouter(viewController: self)
     
     // MARK: - View models
     
@@ -39,8 +41,17 @@ class NotesListViewController: UIViewController, UITableViewDelegate, UITableVie
     @objc public func didTapCreateNote() {
         print("didTapCreateNote")
     }
+}
+
+extension NotesListViewController: UITableViewDelegate {
     
-    // MARK: - UITableViewDataSource
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let model = viewModel?.notes[indexPath.row] else { return }
+        router.showNote(for: model.noteId)
+    }
+}
+
+extension NotesListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.notes.count ?? 0
