@@ -1,24 +1,24 @@
 //
-//  NotesListStore.swift
+//  NotesStore.swift
 //  NoteManagerCleanSwift
 //
-//  Created by Lada Vrska on 08/10/2019.
+//  Created by Lada Vrska on 11/10/2019.
 //  Copyright © 2019 Lada Vrska. All rights reserved.
 //
 
 import Foundation
 import Alamofire
 
-public struct NotesListStore: NotesStore {
+class NotesStore: NotesStoreProtocol {
     
     public init() {
         
     }
 }
 
-public extension NotesListStore {
+extension NotesStore {
     
-    func fetch(completion: @escaping (Result<[NoteType]>) -> Void) {
+    func fetchNotes(completion: @escaping (Result<[NoteType]>) -> Void) {
         guard let url = self.baseUrl else {
             return
         }

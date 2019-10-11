@@ -16,18 +16,48 @@ protocol NotesListDisplayLogic: class, AppDisplayable {
 
 class NotesListViewController: UIViewController {
     
+    var interactor: NotesListBusinessLogic?
+    //var router: (NSObjectProtocol & ListOrdersRoutingLogic & ListOrdersDataPassing)?
+    
     var tableView = UITableView()
     private let cellReuseIdentifier = "PersonalNoteTableViewCell"
     public var topOffset: CGFloat = 90
     var activityIndicator = UIActivityIndicatorView()
     let refreshControl = UIRefreshControl()
     
-    private lazy var interactor = NotesListInteractor(
-        presenter: NotesListPresenter(viewController: self),
-        notesWorker: NotesWorker(store: NotesListStore())
-    )
+//    private lazy var interactor = NotesListInteractor(
+//        presenter: NotesListPresenter(viewController: self),
+//        notesWorker: NotesWorker(store: NotesListStore())
+//    )
     
     private lazy var router: NotesListRoutingLogic = NotesListRouter(viewController: self)
+    
+    // MARK: Object lifecycle
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    // MARK: Setup
+    
+    private func setup() {
+        let viewController = self
+        let interactor = NotesListInteractor()
+        let presenter = NotesListPresenter(viewController: self)   //NotesListPresenter()
+        let router = NotesListRouter(viewController: self)  // NotesListRouter()  correct!!!
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        //presenter.viewController = viewController
+        //router.viewController = viewController
+        //router.dataStore = interactor
+    }
     
     // MARK: - View models
     
@@ -77,9 +107,10 @@ extension NotesListViewController: UITableViewDataSource {
 private extension NotesListViewController {
     
     func loadData() {
-        interactor.fetchNotes(
-            with: NotesListModels.FetchNotes.FetchRequest()
-        )
+        //interactor?.fetchNotes(with: NotesListModels.FetchNotes.FetchRequest())
+        
+        interactor?.fetchNotesNew(request: NotesListModels.FetchNotes.FetchRequest())
+
     }
     
     func loadUI() {

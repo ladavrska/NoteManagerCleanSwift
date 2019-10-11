@@ -9,19 +9,26 @@
 import Foundation
 import Alamofire
 
-public struct NotesWorker: NotesWorkerType {
+class NotesWorker {
+    var notesStore: NotesStoreProtocol
     
-    private let store: NotesStore
+    init(notesStore: NotesStoreProtocol) {
+        self.notesStore = notesStore
+    }
     
-    public init(store: NotesStore) {
-        self.store = store
+    func fetchNotes(completion: @escaping (Result<[NoteType]>) -> Void) {
+        notesStore.fetchNotes(completion: completion)
     }
 }
 
-public extension NotesWorker {
+protocol NotesStoreProtocol {
+    var baseUrl: String? { get }
     
-    func fetch(completion: @escaping (Result<[NoteType]>) -> Void) {
-        store.fetch(completion: completion)
+    func fetchNotes(completion: @escaping (Result<[NoteType]>) -> Void)
+}
+
+extension NotesStoreProtocol {
+    public var baseUrl: String? {
+        return Bundle.main.infoDictionary!["BaseUrl"] as? String
     }
-    
 }
