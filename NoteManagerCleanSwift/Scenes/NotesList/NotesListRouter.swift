@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol NotesListRoutingLogic {
+    func showNote(for noteId: Int)
+}
+
 struct NotesListRouter {
     weak var viewController: UIViewController?
     
@@ -16,7 +20,7 @@ struct NotesListRouter {
     }
 }
 
-extension NotesListRouter: NotesListRoutable {
+extension NotesListRouter: NotesListRoutingLogic {
     
     func showNote(for noteId: Int) {
         print("router showNote : id  \(noteId) ")

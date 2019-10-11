@@ -9,10 +9,17 @@
 import Foundation
 import UIKit
 
-struct NotesListPresenter: NotesListPresentable {
-    private weak var viewController: NotesListDisplayable?
+protocol NotesListPresentationLogic {
+    func presentFetchedNotes(for response: NotesListModels.FetchNotes.Response)
+    func presentFetchedNotes(error: DataError)
+    func showActivityIndicator()
+    func hideActivityIndicator()
+}
+
+struct NotesListPresenter: NotesListPresentationLogic {
+    private weak var viewController: NotesListDisplayLogic?
     
-    init(viewController: NotesListDisplayable?) {
+    init(viewController: NotesListDisplayLogic?) {
         self.viewController = viewController
     }
 }

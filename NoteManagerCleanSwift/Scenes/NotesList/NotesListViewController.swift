@@ -9,6 +9,11 @@
 import UIKit
 import SnapKit
 
+protocol NotesListDisplayLogic: class, AppDisplayable {
+    func displayFetchedNotes(with viewModel: NotesListModels.FetchNotes.ViewModel)
+    func displayNavigationBar(title: String)
+}
+
 class NotesListViewController: UIViewController {
     
     var tableView = UITableView()
@@ -17,14 +22,12 @@ class NotesListViewController: UIViewController {
     var activityIndicator = UIActivityIndicatorView()
     let refreshControl = UIRefreshControl()
     
-    // MARK: - VIP variables
-    
     private lazy var interactor = NotesListInteractor(
         presenter: NotesListPresenter(viewController: self),
         notesWorker: NotesWorker(store: NotesListStore())
     )
     
-    private lazy var router: NotesListRoutable = NotesListRouter(viewController: self)
+    private lazy var router: NotesListRoutingLogic = NotesListRouter(viewController: self)
     
     // MARK: - View models
     
@@ -90,7 +93,7 @@ private extension NotesListViewController {
 
 // MARK: - VIP cycle
 
-extension NotesListViewController: NotesListDisplayable {
+extension NotesListViewController: NotesListDisplayLogic {
     
     func displayFetchedNotes(with viewModel: NotesListModels.FetchNotes.ViewModel) {
         print("viewModel: \(viewModel)")

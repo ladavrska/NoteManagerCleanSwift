@@ -8,11 +8,15 @@
 
 import Foundation
 
+protocol NotesListBusinessLogic {
+    func fetchNotes(with request: NotesListModels.FetchNotes.FetchRequest)
+}
+
 struct NotesListInteractor {
-    private let presenter: NotesListPresentable
+    private let presenter: NotesListPresentationLogic
     private let notesWorker: NotesWorkerType
     
-    init(presenter: NotesListPresentable, notesWorker: NotesWorkerType) {
+    init(presenter: NotesListPresentationLogic, notesWorker: NotesWorkerType) {
         self.presenter = presenter
         self.notesWorker = notesWorker
     }
