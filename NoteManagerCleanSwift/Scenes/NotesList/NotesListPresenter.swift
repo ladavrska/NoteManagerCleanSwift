@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 
 protocol NotesListPresentationLogic {
-    func presentFetchedNotes(for response: NotesListModels.FetchNotes.Response)
-    func presentFetchedNotes(error: DataError)
+    func presentFetchedNotes(response: NotesListModels.FetchNotes.Response)
+    func presentFetchedNotes(error: NotesStoreError)
     func showActivityIndicator()
     func hideActivityIndicator()
 }
@@ -26,7 +26,7 @@ struct NotesListPresenter: NotesListPresentationLogic {
 
 extension NotesListPresenter {
     
-    func presentFetchedNotes(for response: NotesListModels.FetchNotes.Response) {
+    func presentFetchedNotes(response: NotesListModels.FetchNotes.Response) {
         let viewModel = NotesListModels.FetchNotes.ViewModel(
             notes: response.notes.map { make(note: $0) }
         )
@@ -34,7 +34,7 @@ extension NotesListPresenter {
         viewController?.displayFetchedNotes(with: viewModel)
     }
     
-    func presentFetchedNotes(error: DataError) {
+    func presentFetchedNotes(error: NotesStoreError) {
         let viewModel = AppModels.Error(
             title: "Notes Error",
             message: "There was an error retrieving the notes: \(error)"

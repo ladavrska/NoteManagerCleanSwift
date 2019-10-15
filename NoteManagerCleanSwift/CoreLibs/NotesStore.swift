@@ -18,13 +18,13 @@ class NotesStore: NotesStoreProtocol {
 
 extension NotesStore {
     
-    func fetchNotes(completion: @escaping (Result<[NoteType]>) -> Void) {
+    func fetchNotes(completion: @escaping (NotesStoreResult<[NoteType]>) -> Void) {
         guard let url = self.baseUrl else {
             return
         }
         Alamofire.request("\(url)/notes").responseData { response in
             let decoder = JSONDecoder()
-            let result: Result<[Note]> = decoder.decodeResponse(from: response)
+            let result: NotesStoreResult<[Note]> = decoder.decodeResponse(from: response)
             switch result {
             case .success(let value):
                 print("result.value: \(value)")

@@ -10,14 +10,14 @@ import Foundation
 import Alamofire
 
 extension JSONDecoder {
-    func decodeResponse<T: Decodable>(from response: DataResponse<Data>) -> Result<T> {
+    func decodeResponse<T: Decodable>(from response: DataResponse<Data>) -> NotesStoreResult<T> {
         guard response.error == nil else {
             print(response.error!)
             return .failure(response.error!)
         }
         
         guard let responseData = response.data else {
-            return .failure(DataError.networkFailure(nil))
+            return .failure(NotesStoreError.cannotFetch("Cannot fetch notes"))
         }
         
         do {
@@ -25,7 +25,7 @@ extension JSONDecoder {
             return .success(decodedData)
         } catch {
             print(error)
-            return .failure(error)
+            return .failure(NotesStoreError.cannotFetch("cannot fetch notes"))
         }
     }
 }

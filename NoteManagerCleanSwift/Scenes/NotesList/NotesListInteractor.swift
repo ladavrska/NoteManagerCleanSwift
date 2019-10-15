@@ -11,7 +11,7 @@ import Foundation
 protocol NotesListBusinessLogic {
     //func fetchNotes(with request: NotesListModels.FetchNotes.FetchRequest)
     
-    func fetchNotesNew(request: NotesListModels.FetchNotes.FetchRequest)
+    func fetchNotes(request: NotesListModels.FetchNotes.FetchRequest)
 }
 
 protocol NotesListDataStore {
@@ -21,43 +21,20 @@ protocol NotesListDataStore {
 class NotesListInteractor: NotesListBusinessLogic, NotesListDataStore {
         
     var presenter: NotesListPresentationLogic?
-//    var notesWorker = NotesWorker(store: NotesListStore())  // NotesWorker(store: NotesListStore())
-//    var ordersWorker = OrdersWorker(ordersStore: OrdersMemStore())
     var notesWorker = NotesWorker(notesStore: NotesStore())
     var notes: [Note]?
     
-//    private let presenter: NotesListPresentationLogic
-//    private let notesWorker: NotesWorkerType
-    
-//    init(presenter: NotesListPresentationLogic, notesWorker: NotesWorkerType) {
-//        self.presenter = presenter
-//        self.notesWorker = notesWorker
-//    }
-    
-    func fetchNotesNew(request: NotesListModels.FetchNotes.FetchRequest) {
+    func fetchNotes(request: NotesListModels.FetchNotes.FetchRequest) {
+        //self.presenter.showActivityIndicator()
         notesWorker.fetchNotes {
             print("$0: \($0)")
             guard let notes = $0.value, $0.isSuccess else {
-                print("erroe")
+                self.presenter?.presentFetchedNotes(error: $0.error as? NotesStoreError ?? .cannotFetch("Cannot fetch notes"))
                 return
-                //return self.presenter.presentFetchedNotes(error: $0.error as? DataError ?? .unknownReason(nil))
             }
             print("notes: \(notes)")
+            //self.presenter.hideActivityIndicator()
+            self.presenter?.presentFetchedNotes(response: NotesListModels.FetchNotes.Response(notes: notes))
         }
     }
-
-//    func fetchNotes(with request: NotesListModels.FetchNotes.FetchRequest) {
-//        //self.presenter.showActivityIndicator()
-//        notesWorker.fetch {
-//            print("$0: \($0)")
-//            guard let notes = $0.value, $0.isSuccess else {
-//                print("erroe")
-//                return
-//                //return self.presenter.presentFetchedNotes(error: $0.error as? DataError ?? .unknownReason(nil))
-//            }
-//            print("notes: \(notes)")
-//            //self.presenter.hideActivityIndicator()
-//            //self.presenter.presentFetchedNotes(for: NotesListModels.FetchNotes.Response(notes: notes))
-//        }
-//    }
 }

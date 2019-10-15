@@ -109,7 +109,7 @@ private extension NotesListViewController {
     func loadData() {
         //interactor?.fetchNotes(with: NotesListModels.FetchNotes.FetchRequest())
         
-        interactor?.fetchNotesNew(request: NotesListModels.FetchNotes.FetchRequest())
+        interactor?.fetchNotes(request: NotesListModels.FetchNotes.FetchRequest())
 
     }
     
