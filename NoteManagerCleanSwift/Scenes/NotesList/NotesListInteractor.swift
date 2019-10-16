@@ -9,8 +9,6 @@
 import Foundation
 
 protocol NotesListBusinessLogic {
-    //func fetchNotes(with request: NotesListModels.FetchNotes.FetchRequest)
-    
     func fetchNotes(request: NotesListModels.FetchNotes.FetchRequest)
 }
 
@@ -25,7 +23,7 @@ class NotesListInteractor: NotesListBusinessLogic, NotesListDataStore {
     var notes: [Note]?
     
     func fetchNotes(request: NotesListModels.FetchNotes.FetchRequest) {
-        //self.presenter.showActivityIndicator()
+        self.presenter?.showActivityIndicator()
         notesWorker.fetchNotes {
             print("$0: \($0)")
             guard let notes = $0.value, $0.isSuccess else {
@@ -33,7 +31,7 @@ class NotesListInteractor: NotesListBusinessLogic, NotesListDataStore {
                 return
             }
             print("notes: \(notes)")
-            //self.presenter.hideActivityIndicator()
+            self.presenter?.hideActivityIndicator()
             self.presenter?.presentFetchedNotes(response: NotesListModels.FetchNotes.Response(notes: notes))
         }
     }

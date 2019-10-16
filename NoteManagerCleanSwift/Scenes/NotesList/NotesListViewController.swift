@@ -25,11 +25,6 @@ class NotesListViewController: UIViewController {
     var activityIndicator = UIActivityIndicatorView()
     let refreshControl = UIRefreshControl()
     
-//    private lazy var interactor = NotesListInteractor(
-//        presenter: NotesListPresenter(viewController: self),
-//        notesWorker: NotesWorker(store: NotesListStore())
-//    )
-    
     private lazy var router: NotesListRoutingLogic = NotesListRouter(viewController: self)
     
     // MARK: Object lifecycle
@@ -49,8 +44,8 @@ class NotesListViewController: UIViewController {
     private func setup() {
         let viewController = self
         let interactor = NotesListInteractor()
-        let presenter = NotesListPresenter(viewController: self)   //NotesListPresenter()
-        let router = NotesListRouter(viewController: self)  // NotesListRouter()  correct!!!
+        let presenter = NotesListPresenter(viewController: self)   
+        let router = NotesListRouter(viewController: self) 
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
@@ -107,10 +102,7 @@ extension NotesListViewController: UITableViewDataSource {
 private extension NotesListViewController {
     
     func loadData() {
-        //interactor?.fetchNotes(with: NotesListModels.FetchNotes.FetchRequest())
-        
         interactor?.fetchNotes(request: NotesListModels.FetchNotes.FetchRequest())
-
     }
     
     func loadUI() {

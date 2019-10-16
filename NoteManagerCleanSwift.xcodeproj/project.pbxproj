@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		075263122355FE42002CE77C /* NotesListInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0752630E2355FE42002CE77C /* NotesListInteractorTests.swift */; };
+		075263132355FE42002CE77C /* NotesListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0752630F2355FE42002CE77C /* NotesListPresenterTests.swift */; };
+		075263142355FE42002CE77C /* NotesListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075263102355FE42002CE77C /* NotesListViewControllerTests.swift */; };
+		075263152355FE42002CE77C /* NotesListWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075263112355FE42002CE77C /* NotesListWorkerTests.swift */; };
+		075263192356586D002CE77C /* NotesMemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075263182356586D002CE77C /* NotesMemStore.swift */; };
 		0759B9AE234B79FF00638861 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759B9AD234B79FF00638861 /* AppDelegate.swift */; };
 		0759B9B0234B79FF00638861 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0759B9AF234B79FF00638861 /* ViewController.swift */; };
 		0759B9B3234B79FF00638861 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0759B9B1234B79FF00638861 /* Main.storyboard */; };
@@ -44,6 +49,11 @@
 
 /* Begin PBXFileReference section */
 		0447BE2A98A00950DDF55E5E /* Pods-NoteManagerCleanSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoteManagerCleanSwift.debug.xcconfig"; path = "Target Support Files/Pods-NoteManagerCleanSwift/Pods-NoteManagerCleanSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		0752630E2355FE42002CE77C /* NotesListInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListInteractorTests.swift; sourceTree = "<group>"; };
+		0752630F2355FE42002CE77C /* NotesListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListPresenterTests.swift; sourceTree = "<group>"; };
+		075263102355FE42002CE77C /* NotesListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListViewControllerTests.swift; sourceTree = "<group>"; };
+		075263112355FE42002CE77C /* NotesListWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListWorkerTests.swift; sourceTree = "<group>"; };
+		075263182356586D002CE77C /* NotesMemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesMemStore.swift; sourceTree = "<group>"; };
 		0759B9AA234B79FF00638861 /* Note Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Note Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0759B9AD234B79FF00638861 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0759B9AF234B79FF00638861 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +103,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0752630C2355FD73002CE77C /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				0752630D2355FD88002CE77C /* NotesList */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		0752630D2355FD88002CE77C /* NotesList */ = {
+			isa = PBXGroup;
+			children = (
+				0752630E2355FE42002CE77C /* NotesListInteractorTests.swift */,
+				0752630F2355FE42002CE77C /* NotesListPresenterTests.swift */,
+				075263102355FE42002CE77C /* NotesListViewControllerTests.swift */,
+				075263112355FE42002CE77C /* NotesListWorkerTests.swift */,
+			);
+			path = NotesList;
+			sourceTree = "<group>";
+		};
 		0759B9A1234B79FF00638861 = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +161,7 @@
 		0759B9C1234B7A1100638861 /* NoteManagerCleanSwiftTests */ = {
 			isa = PBXGroup;
 			children = (
+				0752630C2355FD73002CE77C /* Scenes */,
 				0759B9C4234B7A1100638861 /* Info.plist */,
 			);
 			path = NoteManagerCleanSwiftTests;
@@ -174,6 +204,7 @@
 				0759B9E5234BD20D00638861 /* Extensions */,
 				0759B9DC234BD07F00638861 /* Models */,
 				07F8FBDE2350DD6600A054BE /* NotesStore.swift */,
+				075263182356586D002CE77C /* NotesMemStore.swift */,
 				0759B9DF234BD0E200638861 /* NotesWorker.swift */,
 			);
 			path = CoreLibs;
@@ -414,6 +445,7 @@
 				0759BA02234C7CCC00638861 /* UIBarButtonItemExtension.swift in Sources */,
 				0759B9F8234C56A100638861 /* NotesListPresenter.swift in Sources */,
 				07F8FBCD234F483800A054BE /* NotesListRouter.swift in Sources */,
+				075263192356586D002CE77C /* NotesMemStore.swift in Sources */,
 				0759B9DE234BD09E00638861 /* NoteType.swift in Sources */,
 				0759B9FD234C57DF00638861 /* AppDisplayable.swift in Sources */,
 				0759BA04234C7FF400638861 /* UIColorExtension.swift in Sources */,
@@ -437,6 +469,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				075263132355FE42002CE77C /* NotesListPresenterTests.swift in Sources */,
+				075263142355FE42002CE77C /* NotesListViewControllerTests.swift in Sources */,
+				075263122355FE42002CE77C /* NotesListInteractorTests.swift in Sources */,
+				075263152355FE42002CE77C /* NotesListWorkerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
