@@ -16,16 +16,9 @@ protocol NotesListPresentationLogic {
     func hideActivityIndicator()
 }
 
-struct NotesListPresenter: NotesListPresentationLogic {
-    private weak var viewController: NotesListDisplayLogic?
-    
-    init(viewController: NotesListDisplayLogic?) {
-        self.viewController = viewController
-    }
-}
+class NotesListPresenter: NotesListPresentationLogic {
+  weak var viewController: NotesListDisplayLogic?
 
-extension NotesListPresenter {
-    
     func presentFetchedNotes(response: NotesListModels.FetchNotes.Response) {
         let viewModel = NotesListModels.FetchNotes.ViewModel(
             notes: response.notes.map { make(note: $0) }

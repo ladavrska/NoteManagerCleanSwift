@@ -44,12 +44,12 @@ class NotesListViewController: UIViewController {
     private func setup() {
         let viewController = self
         let interactor = NotesListInteractor()
-        let presenter = NotesListPresenter(viewController: self)   
+        let presenter = NotesListPresenter() 
         let router = NotesListRouter(viewController: self) 
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
-        //presenter.viewController = viewController
+        presenter.viewController = viewController
         //router.viewController = viewController
         //router.dataStore = interactor
     }
