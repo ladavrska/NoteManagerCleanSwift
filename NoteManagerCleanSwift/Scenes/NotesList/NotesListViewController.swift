@@ -17,14 +17,12 @@ protocol NotesListDisplayLogic: class, AppDisplayable {
 class NotesListViewController: UIViewController {
     
   var interactor: NotesListBusinessLogic?
-  
+  var router: NotesListRoutingLogic?
   var tableView = UITableView()
   private let cellReuseIdentifier = "PersonalNoteTableViewCell"
   public var topOffset: CGFloat = 90
   var activityIndicator = UIActivityIndicatorView()
   let refreshControl = UIRefreshControl()
-  
-  private lazy var router: NotesListRoutingLogic = NotesListRouter(viewController: self)
   
   // MARK: Object lifecycle
   
@@ -44,12 +42,12 @@ class NotesListViewController: UIViewController {
     let viewController = self
     let interactor = NotesListInteractor()
     let presenter = NotesListPresenter()
-    let router = NotesListRouter(viewController: self)
+    let router = NotesListRouter()
     viewController.interactor = interactor
     viewController.router = router
     interactor.presenter = presenter
     presenter.viewController = viewController
-    //router.viewController = viewController
+    router.viewController = viewController
     //router.dataStore = interactor
   }
     
@@ -74,7 +72,7 @@ extension NotesListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       guard let model = viewModel?.notes[indexPath.row] else { return }
-      router.showNote(for: model.noteId)
+      router?.showNote(for: model.noteId)
     }
 }
 

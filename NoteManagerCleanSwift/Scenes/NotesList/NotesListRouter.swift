@@ -9,23 +9,19 @@
 import UIKit
 
 protocol NotesListRoutingLogic {
-    func showNote(for noteId: Int)
+  func showNote(for noteId: Int)
 }
 
-struct NotesListRouter {
-    weak var viewController: UIViewController?
-    
-    init(viewController: UIViewController?) {
-        self.viewController = viewController
-    }
+class NotesListRouter {
+  weak var viewController: UIViewController?
 }
 
 extension NotesListRouter: NotesListRoutingLogic {
     
-    func showNote(for noteId: Int) {
-        print("router showNote : id  \(noteId) ")
-        
-        let detailVC = NotesDetailViewController()
-        viewController?.navigationController?.pushViewController(detailVC, animated: true)
-    }
+  func showNote(for noteId: Int) {
+    print("router showNote : id  \(noteId) ")
+  
+    let detailVC = NotesDetailViewController()
+    viewController?.navigationController?.pushViewController(detailVC, animated: true)
+  }
 }
