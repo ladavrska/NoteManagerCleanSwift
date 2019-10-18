@@ -180,21 +180,14 @@
 			isa = PBXGroup;
 			children = (
 				0759B9F1234C55C800638861 /* Views */,
-				0759B9D5234BC7F600638861 /* Common */,
 				0759B9D1234BC6B000638861 /* NotesListViewController.swift */,
 				0759B9D3234BC77A00638861 /* NotesListInteractor.swift */,
 				0759B9F7234C56A100638861 /* NotesListPresenter.swift */,
 				07F8FBCC234F483800A054BE /* NotesListRouter.swift */,
+				0759B9D9234BD03900638861 /* NotesListModels.swift */,
+				0759B9DF234BD0E200638861 /* NotesWorker.swift */,
 			);
 			path = NotesList;
-			sourceTree = "<group>";
-		};
-		0759B9D5234BC7F600638861 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				0759B9D9234BD03900638861 /* NotesListModels.swift */,
-			);
-			path = Common;
 			sourceTree = "<group>";
 		};
 		0759B9DB234BD07300638861 /* CoreLibs */ = {
@@ -205,7 +198,6 @@
 				0759B9DC234BD07F00638861 /* Models */,
 				07F8FBDE2350DD6600A054BE /* NotesStore.swift */,
 				075263182356586D002CE77C /* NotesMemStore.swift */,
-				0759B9DF234BD0E200638861 /* NotesWorker.swift */,
 			);
 			path = CoreLibs;
 			sourceTree = "<group>";
