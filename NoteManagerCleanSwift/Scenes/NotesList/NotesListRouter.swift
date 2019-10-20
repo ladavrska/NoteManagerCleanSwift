@@ -9,19 +9,37 @@
 import UIKit
 
 protocol NotesListRoutingLogic {
-  func showNote(for noteId: Int)
+  func routeToNoteDetail()
 }
 
-class NotesListRouter {
-  weak var viewController: UIViewController?
+protocol NotesListDataPassing {
+  var dataStore: NotesListDataStore? { get }
 }
-
-extension NotesListRouter: NotesListRoutingLogic {
-    
-  func showNote(for noteId: Int) {
-    print("router showNote : id  \(noteId) ")
   
-    let detailVC = NotesDetailViewController()
-    viewController?.navigationController?.pushViewController(detailVC, animated: true)
+class NotesListRouter: /*NSObject,*/NotesListRoutingLogic, NotesListDataPassing {
+  weak var viewController: NotesListViewController?
+  var dataStore: NotesListDataStore?
+
+  // MARK: Routing
+    
+  func routeToNoteDetail() {
+    let destinationVC = NotesDetailViewController()
+    var destinationDS = destinationVC.router!.dataStore!
+    passDataToNotesDetail(source: dataStore!, destination: &destinationDS)
+    
+    navigateToNotesDetail(source: viewController!, destination: destinationVC)
+  }
+  
+  // MARK: Passing data
+  
+  func passDataToNotesDetail(source: NotesListDataStore, destination: inout NotesDetailDataStore) {
+    let selectedRow = viewController?.tableView.indexPathForSelectedRow?.row
+    destination.note = source.notes?[selectedRow!]
+  }
+  
+  // MARK: Navigation
+  
+  func navigateToNotesDetail(source: NotesListViewController, destination: NotesDetailViewController) {
+    source.show(destination, sender: nil)
   }
 }

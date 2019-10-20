@@ -48,7 +48,7 @@ class NotesListViewController: UIViewController {
     interactor.presenter = presenter
     presenter.viewController = viewController
     router.viewController = viewController
-    //router.dataStore = interactor
+    router.dataStore = interactor
   }
     
   // MARK: - View models
@@ -71,8 +71,8 @@ class NotesListViewController: UIViewController {
 extension NotesListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      guard let model = viewModel?.notes[indexPath.row] else { return }
-      router?.showNote(for: model.noteId)
+//      guard let model = viewModel?.notes[indexPath.row] else { return }
+      router?.routeToNoteDetail()
     }
 }
 

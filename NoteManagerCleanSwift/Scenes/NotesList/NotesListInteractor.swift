@@ -13,7 +13,7 @@ protocol NotesListBusinessLogic {
 }
 
 protocol NotesListDataStore {
-    var notes: [Note]? { get }
+    var notes: [Note]? { get }  // Array optional?
 }
 
 class NotesListInteractor: NotesListBusinessLogic, NotesListDataStore {
@@ -21,7 +21,9 @@ class NotesListInteractor: NotesListBusinessLogic, NotesListDataStore {
     var presenter: NotesListPresentationLogic?
     var notesWorker = NotesWorker(notesStore: NotesStore())
     var notes: [Note]?
-    
+  
+  // MARK: - Fetch orders
+  
     func fetchNotes(request: NotesListModels.FetchNotes.FetchRequest) {
         self.presenter?.showActivityIndicator()
         notesWorker.fetchNotes {
@@ -30,9 +32,10 @@ class NotesListInteractor: NotesListBusinessLogic, NotesListDataStore {
                 self.presenter?.presentFetchedNotes(error: $0.error as? NotesStoreError ?? .cannotFetch("Cannot fetch notes"))
                 return
             }
-            print("notes: \(notes)")
-            self.presenter?.hideActivityIndicator()
-            self.presenter?.presentFetchedNotes(response: NotesListModels.FetchNotes.Response(notes: notes))
+          self.notes = notes as? [Note] ?? []
+          print("notes: \(notes)")
+          self.presenter?.hideActivityIndicator()
+          self.presenter?.presentFetchedNotes(response: NotesListModels.FetchNotes.Response(notes: notes))
         }
     }
 }
