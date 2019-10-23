@@ -37,6 +37,7 @@
 		07C1C2AD235AEC6B00AF9FBA /* NotesDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C1C2A7235AEC6B00AF9FBA /* NotesDetailRouter.swift */; };
 		07C1C2AE235AEC6B00AF9FBA /* NotesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C1C2A8235AEC6B00AF9FBA /* NotesDetailViewController.swift */; };
 		07C1C2AF235AEC6B00AF9FBA /* NotesDetailWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C1C2A9235AEC6B00AF9FBA /* NotesDetailWorker.swift */; };
+		07C1C2B1235CD40F00AF9FBA /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C1C2B0235CD40F00AF9FBA /* InputView.swift */; };
 		07F8FBCD234F483800A054BE /* NotesListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F8FBCC234F483800A054BE /* NotesListRouter.swift */; };
 		07F8FBDF2350DD6600A054BE /* NotesStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F8FBDE2350DD6600A054BE /* NotesStore.swift */; };
 		B4DF83BA2DAD004B07338534 /* Pods_NoteManagerCleanSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78483191245596C8F944BE4 /* Pods_NoteManagerCleanSwift.framework */; };
@@ -88,6 +89,7 @@
 		07C1C2A7235AEC6B00AF9FBA /* NotesDetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDetailRouter.swift; sourceTree = "<group>"; };
 		07C1C2A8235AEC6B00AF9FBA /* NotesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDetailViewController.swift; sourceTree = "<group>"; };
 		07C1C2A9235AEC6B00AF9FBA /* NotesDetailWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDetailWorker.swift; sourceTree = "<group>"; };
+		07C1C2B0235CD40F00AF9FBA /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		07F8FBCC234F483800A054BE /* NotesListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListRouter.swift; sourceTree = "<group>"; };
 		07F8FBDE2350DD6600A054BE /* NotesStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesStore.swift; sourceTree = "<group>"; };
 		AF801775EEA4E8AAD486C584 /* Pods-NoteManagerCleanSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoteManagerCleanSwift.release.xcconfig"; path = "Target Support Files/Pods-NoteManagerCleanSwift/Pods-NoteManagerCleanSwift.release.xcconfig"; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				0759B9F5234C564E00638861 /* BaseTableViewCell.swift */,
+				07C1C2B0235CD40F00AF9FBA /* InputView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -259,11 +262,11 @@
 		07F8FBD3234FA34D00A054BE /* NotesDetail */ = {
 			isa = PBXGroup;
 			children = (
-				07C1C2A4235AEC6B00AF9FBA /* NotesDetailInteractor.swift */,
-				07C1C2A5235AEC6B00AF9FBA /* NotesDetailModels.swift */,
-				07C1C2A6235AEC6B00AF9FBA /* NotesDetailPresenter.swift */,
-				07C1C2A7235AEC6B00AF9FBA /* NotesDetailRouter.swift */,
 				07C1C2A8235AEC6B00AF9FBA /* NotesDetailViewController.swift */,
+				07C1C2A4235AEC6B00AF9FBA /* NotesDetailInteractor.swift */,
+				07C1C2A6235AEC6B00AF9FBA /* NotesDetailPresenter.swift */,
+				07C1C2A5235AEC6B00AF9FBA /* NotesDetailModels.swift */,
+				07C1C2A7235AEC6B00AF9FBA /* NotesDetailRouter.swift */,
 				07C1C2A9235AEC6B00AF9FBA /* NotesDetailWorker.swift */,
 			);
 			path = NotesDetail;
@@ -462,6 +465,7 @@
 				0759B9D4234BC77A00638861 /* NotesListInteractor.swift in Sources */,
 				07C1C2AA235AEC6B00AF9FBA /* NotesDetailInteractor.swift in Sources */,
 				0759B9B0234B79FF00638861 /* ViewController.swift in Sources */,
+				07C1C2B1235CD40F00AF9FBA /* InputView.swift in Sources */,
 				07C1C2AE235AEC6B00AF9FBA /* NotesDetailViewController.swift in Sources */,
 				0759B9D2234BC6B000638861 /* NotesListViewController.swift in Sources */,
 				0759B9E7234BD22D00638861 /* JSONDecoderExtension.swift in Sources */,

@@ -12,8 +12,7 @@
 
 import UIKit
 
-class NotesDetailWorker
-{
+class NotesDetailWorker {
   func doSomeWork() {
   }
 }

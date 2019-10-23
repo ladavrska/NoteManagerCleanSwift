@@ -13,7 +13,7 @@
 import UIKit
 
 protocol NotesDetailBusinessLogic {
-  func doSomething(request: NotesDetail.Something.Request)
+  func fetchNote(request: NotesDetail.FetchNote.Request)
 }
 
 protocol NotesDetailDataStore {
@@ -27,11 +27,24 @@ class NotesDetailInteractor: NotesDetailBusinessLogic, NotesDetailDataStore {
   
   // MARK: Do something
   
-  func doSomething(request: NotesDetail.Something.Request) {
+  func fetchNote(request: NotesDetail.FetchNote.Request) {
     worker = NotesDetailWorker()
     worker?.doSomeWork()
     
-    let response = NotesDetail.Something.Response()
+          //self.presenter?.showActivityIndicator()
+//    notesWorker.fetchNotes {
+//      print("$0: \($0)")
+//      guard let notes = $0.value, $0.isSuccess else {
+//        self.presenter?.presentFetchedNotes(error: $0.error as? NotesStoreError ?? .cannotFetch("Cannot fetch notes"))
+//        return
+//      }
+//      self.notes = notes as? [Note] ?? []
+//      print("notes: \(notes)")
+//          //self.presenter?.hideActivityIndicator()
+//      self.presenter?.presentFetchedNotes(response: NotesListModels.FetchNotes.Response(notes: notes))
+//    }
+    
+    let response = NotesDetail.FetchNote.Response()
     presenter?.presentSomething(response: response)
   }
 }

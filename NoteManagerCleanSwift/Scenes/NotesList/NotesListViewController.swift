@@ -10,11 +10,10 @@ import UIKit
 import SnapKit
 
 protocol NotesListDisplayLogic: class, AppDisplayable {
-  func displayFetchedNotes(with viewModel: NotesListModels.FetchNotes.ViewModel)
-  func displayNavigationBar(title: String)
+  func displayFetchedNotes(viewModel: NotesListModels.FetchNotes.ViewModel)
 }
 
-class NotesListViewController: UIViewController {
+class NotesListViewController: UIViewController, NotesListDisplayLogic {
     
   var interactor: NotesListBusinessLogic?
   var router: NotesListRoutingLogic?
@@ -50,11 +49,7 @@ class NotesListViewController: UIViewController {
     router.viewController = viewController
     router.dataStore = interactor
   }
-    
-  // MARK: - View models
-  
-  private var viewModel: NotesListModels.FetchNotes.ViewModel?
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     displayNavigationBar(title: "My notees")
@@ -66,27 +61,40 @@ class NotesListViewController: UIViewController {
   @objc public func didTapCreateNote() {
     print("didTapCreateNote")
   }
+  
+  // MARK: - VIP cycle
+  
+  var displayedNotes: [NotesListModels.FetchNotes.ViewModel.DisplayedNote] = []
+  
+  func displayFetchedNotes(viewModel: NotesListModels.FetchNotes.ViewModel) {
+    print("viewModel: \(viewModel)")
+    displayedNotes = viewModel.displayedNotes
+    loadUI()
+  }
 }
+
+// MARK: UITableViewDelegate
 
 extension NotesListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//      guard let model = viewModel?.notes[indexPath.row] else { return }
       router?.routeToNoteDetail()
     }
 }
 
+// MARK: UITableViewDataSource
+
 extension NotesListViewController: UITableViewDataSource {
     
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return viewModel?.notes.count ?? 0
+    return displayedNotes.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     var cell = UITableViewCell()
     if let noteCell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as? PersonalNoteTableViewCell {
-      guard let model = viewModel?.notes[indexPath.row] else { return cell }
+      let model = displayedNotes[indexPath.row]
       noteCell.bind(model)
       cell = noteCell
     }
@@ -99,7 +107,7 @@ extension NotesListViewController: UITableViewDataSource {
 private extension NotesListViewController {
     
   func loadData() {
-    let request = NotesListModels.FetchNotes.FetchRequest()
+     let request = NotesListModels.FetchNotes.FetchRequest()
     interactor?.fetchNotes(request: request)
   }
   
@@ -109,16 +117,5 @@ private extension NotesListViewController {
   
   @objc private func refreshData(_ sender: Any) {
     loadData()
-  }
-}
-
-// MARK: - VIP cycle
-
-extension NotesListViewController: NotesListDisplayLogic {
-    
-  func displayFetchedNotes(with viewModel: NotesListModels.FetchNotes.ViewModel) {
-      print("viewModel: \(viewModel)")
-      self.viewModel = viewModel
-      loadUI()
   }
 }

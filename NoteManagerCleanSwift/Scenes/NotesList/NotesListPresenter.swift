@@ -21,10 +21,10 @@ class NotesListPresenter: NotesListPresentationLogic {
 
     func presentFetchedNotes(response: NotesListModels.FetchNotes.Response) {
         let viewModel = NotesListModels.FetchNotes.ViewModel(
-            notes: response.notes.map { make(note: $0) }
+          displayedNotes: response.notes.map { make(note: $0) }
         )
         
-        viewController?.displayFetchedNotes(with: viewModel)
+      viewController?.displayFetchedNotes(viewModel: viewModel)
     }
     
     func presentFetchedNotes(error: NotesStoreError) {
@@ -37,7 +37,7 @@ class NotesListPresenter: NotesListPresentationLogic {
     }
     
     func showActivityIndicator() {
-        guard let noteListVC = viewController, !noteListVC.refreshControl.isRefreshing else {
+      guard let noteListVC = viewController, let refCtrl = noteListVC.refreshControl, !refCtrl.isRefreshing else {
             return
         }
         viewController?.showActivityIndicator()
@@ -53,8 +53,8 @@ class NotesListPresenter: NotesListPresentationLogic {
 
 private extension NotesListPresenter {
     
-    func make(note: NoteType) -> NotesListModels.FetchNotes.NoteViewModel {
-        return NotesListModels.FetchNotes.NoteViewModel(
+    func make(note: NoteType) -> NotesListModels.FetchNotes.ViewModel.DisplayedNote {
+        return NotesListModels.FetchNotes.ViewModel.DisplayedNote(
             noteId: note.noteId,
             title: note.title
         )

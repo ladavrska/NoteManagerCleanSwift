@@ -12,13 +12,18 @@
 
 import UIKit
 
-protocol NotesDetailDisplayLogic: class {
-  func displaySomething(viewModel: NotesDetail.Something.ViewModel)
+protocol NotesDetailDisplayLogic: class, AppDisplayable {
+  func displaySomething(viewModel: NotesDetail.FetchNote.ViewModel)
 }
 
-class NotesDetailViewController: UIViewController, NotesDetailDisplayLogic {
+class NotesDetailViewController: UIViewController, NotesDetailDisplayLogic, UITextViewDelegate {
+  var activityIndicator = UIActivityIndicatorView()
+  
   var interactor: NotesDetailBusinessLogic?
   var router: (NSObjectProtocol & NotesDetailRoutingLogic & NotesDetailDataPassing)?
+  
+  var input: InputView?
+  var topOffset: CGFloat = 110
 
   // MARK: Object lifecycle
   
@@ -48,35 +53,45 @@ class NotesDetailViewController: UIViewController, NotesDetailDisplayLogic {
   }
   
   // MARK: Routing
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let scene = segue.identifier {
-      let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-      if let router = router, router.responds(to: selector) {
-        router.perform(selector, with: segue)
-      }
-    }
-  }
-  
+
   // MARK: View lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    doSomething()
+    self.view.backgroundColor = .white
     let myNote = self.router?.dataStore?.note
     print("Notes detail note: \(String(describing: myNote))")
+    
+    // populateNavigationBar(title: "My notees")
+    prepareInput()
+    loadData()
   }
   
-  // MARK: Do something
+  // MARK: - InputView
+  
+  func prepareInput() {
+    let inputView = InputView(hasBorder: false)
+    view.addSubview(inputView)
+    inputView.inputViewDelegate = self
+    inputView.hasBorder = false
+    inputView.backgroundColor = .lightGray
+    inputView.snp.makeConstraints { (maker) in
+      maker.top.equalToSuperview().offset(self.topOffset)
+      maker.left.equalToSuperview().offset(30)
+      maker.bottom.equalToSuperview().offset(-20)
+      maker.right.equalToSuperview().offset(-30)
+    }
+    input = inputView
+  }
   
   //@IBOutlet weak var nameTextField: UITextField!
   
-  func doSomething() {
-    let request = NotesDetail.Something.Request()
-    interactor?.doSomething(request: request)
+  func loadData() {
+    let request = NotesDetail.FetchNote.Request()
+    interactor?.fetchNote(request: request)
   }
   
-  func displaySomething(viewModel: NotesDetail.Something.ViewModel) {
+  func displaySomething(viewModel: NotesDetail.FetchNote.ViewModel) {
     //nameTextField.text = viewModel.name
   }
 }

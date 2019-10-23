@@ -12,11 +12,10 @@
 
 import UIKit
 
-enum NotesDetail
-{
+enum NotesDetail {
   // MARK: Use cases
   
-  enum Something {
+  enum FetchNote {
     struct Request {
     }
     struct Response {

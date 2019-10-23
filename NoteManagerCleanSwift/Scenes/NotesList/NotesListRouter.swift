@@ -16,7 +16,7 @@ protocol NotesListDataPassing {
   var dataStore: NotesListDataStore? { get }
 }
   
-class NotesListRouter: /*NSObject,*/NotesListRoutingLogic, NotesListDataPassing {
+class NotesListRouter: NotesListRoutingLogic, NotesListDataPassing {
   weak var viewController: NotesListViewController?
   var dataStore: NotesListDataStore?
 

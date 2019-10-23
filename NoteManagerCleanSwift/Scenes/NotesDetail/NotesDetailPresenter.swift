@@ -13,7 +13,7 @@
 import UIKit
 
 protocol NotesDetailPresentationLogic {
-  func presentSomething(response: NotesDetail.Something.Response)
+  func presentSomething(response: NotesDetail.FetchNote.Response)
 }
 
 class NotesDetailPresenter: NotesDetailPresentationLogic {
@@ -21,8 +21,8 @@ class NotesDetailPresenter: NotesDetailPresentationLogic {
   
   // MARK: Do something
   
-  func presentSomething(response: NotesDetail.Something.Response) {
-    let viewModel = NotesDetail.Something.ViewModel()
+  func presentSomething(response: NotesDetail.FetchNote.Response) {
+    let viewModel = NotesDetail.FetchNote.ViewModel()
     viewController?.displaySomething(viewModel: viewModel)
   }
 }
